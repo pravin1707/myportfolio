@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 
 import Button from '../components/Button'
-import HeroExperience from '../components/HeroModels/HeroExperience'
+import HeroExperience from '../components/Models/HeroModels/HeroExperience'
 import AnimatedCounter from '../components/AnimatedCounter'
 
 const Hero = () => {
@@ -34,7 +34,7 @@ const Hero = () => {
           <div className="flex flex-col gap-7">
             <div className="hero-text">
               <h1>
-                Shaping 
+                Shaping
                 <span className="slide">
                   <span className="wrapper">
                     {words.map((word) => (

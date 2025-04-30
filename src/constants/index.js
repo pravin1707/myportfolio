@@ -248,24 +248,24 @@ const testimonials = [
 ];
 
 const socialImgs = [
+  // {
+  //   name: "insta",
+  //   url: "https://www.instagram.com/",
+  //   imgPath: "/images/insta.png",
+  // },
   {
-    name: "insta",
-    url: "https://www.instagram.com/",
-    imgPath: "/images/insta.png",
-  },
-  {
-    name: "fb",
-    url: "https://www.facebook.com/",
-    imgPath: "/images/fb.png",
+    name: "Github",
+    url: "https://github.com/pravin1707/",
+    imgPath: "/images/Github.png",
   },
   {
     name: "x",
-    url: "https://www.x.com/",
+    url: "https://x.com/PKpravin17/",
     imgPath: "/images/x.png",
   },
   {
     name: "linkedin",
-    url: "https://www.linkedin.com/",
+    url: "https://www.linkedin.com/in/pravin-kumar-52167719a/",
     imgPath: "/images/linkedin.png",
   },
 ];

@@ -4,7 +4,7 @@ import gsap from "gsap";
 import TitleHeader from "../components/TitleHeader";
 import TechIcon from "../components/Models/TechLogos/TechIcon";
 import { techStackIcons } from "../constants";
-// import { techStackImgs } from "../constants";
+import { techStackImgs } from "../constants";
 
 const TechStack = () => {
   // Animate the tech cards in the skills section
@@ -72,7 +72,7 @@ const TechStack = () => {
           ))}
 
           {/* This is for the img part */}
-          {/* {techStackImgs.map((techStackIcon, index) => (
+          {techStackImgs.map((techStackIcon, index) => (
             <div
               key={index}
               className="card-border tech-card overflow-hidden group xl:rounded-full rounded-lg"
@@ -87,7 +87,7 @@ const TechStack = () => {
                 </div>
               </div>
             </div>
-          ))} */}
+          ))}
         </div>
       </div>
     </div>
