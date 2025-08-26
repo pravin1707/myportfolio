@@ -1,4 +1,5 @@
-import Hero from './sections/Hero'
+import Hero from "./sections/Hero"
+
 
 function App() {
   return (
