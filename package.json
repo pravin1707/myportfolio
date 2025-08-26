@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://pravin1707.github.io/portfolio",
+  "homepage": "https://pravin1707.github.io/myportfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -14,8 +14,12 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.12",
+    "clsx": "^2.1.1",
+    "motion": "^12.23.12",
+    "next": "^15.5.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
