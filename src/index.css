@@ -1,19 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 @import "tailwindcss";
 
-:root {
-  --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
-}
-
-html,
-body {
-  width: 100dvw;
-  overflow-x: hidden;
-  background-color: #0a0a0a;
-  color: white;
-  scroll-behavior: smooth;
-}
-
 section {
   width: 100dvw;
 }
@@ -33,6 +20,16 @@ section {
   }
   .flex-col-center {
     @apply flex flex-col justify-center items-center;
+  }
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    /* All necessary base styles for the page */
+    @apply bg-black/[0.96] antialiased overflow-x-hidden text-neutral-200;
   }
 }
 
@@ -102,7 +99,7 @@ section {
 
   .navbar {
     @apply fixed top-10 w-11/12 left-1/2 py-4 px-5 md:px-10 -translate-x-1/2 z-[100];
-    @apply border-2 border-white/50 rounded-3xl bg-black/20 backdrop-blur-sm;
+    @apply border-2 border-transparent rounded-3xl bg-black/20 backdrop-blur-sm;
 
     &.scrolled {
       @apply top-0 bg-black;

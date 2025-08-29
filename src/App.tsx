@@ -1,6 +1,5 @@
-import NavBar from "./components/navBar"
-import Hero from "./sections/Hero"
-
+import NavBar from "./components/navBar";
+import Hero from "./sections/Hero";
 
 function App() {
   return (
@@ -8,7 +7,7 @@ function App() {
       <NavBar />
       <Hero />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

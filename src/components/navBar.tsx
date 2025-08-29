@@ -33,17 +33,18 @@ const NavBar = () => {
     }
   }, []);
 
+  // useEffect: GSAP navbar animation
   useEffect(() => {
     const navElement = navRef.current;
 
     gsap.to(navElement, {
       // These are the properties we are animating TO
+      top: "100px",                           // Move to the top
+      // width: "100%",                        // Expand to 100% width
       backgroundColor: "rgba(0, 0, 0, 0.5)", // More opaque black
-      backdropFilter: "blur(10px)",         // A stronger blur
+      backdropFilter: "blur(5px)",         // A stronger blur
       border: "2px solid rgba(255, 255, 255, 0.5)", // Ensure border remains consistent
-      top: "0px",                           // Move to the top
-      width: "100%",                        // Expand to 100% width
-      borderRadius: "0px",
+      borderRadius: "24px",
       
       // ScrollTrigger configuration
       scrollTrigger: {
@@ -51,9 +52,20 @@ const NavBar = () => {
         start: "top top",     // Start animating when the top of the body hits the top of the viewport
         end: "+=150",         // Finish the animation 150px after the start point
         scrub: 1,             // Smoothly links the animation to the scrollbar (1-second catch-up)
-        //markers: true,     // Uncomment this for debugging, remove for production
+        // markers: true,     // Uncomment this for debugging, remove for production
       }
     });
+  }, []);
+
+  // handle scroll restoration
+  useEffect(() => {
+    // Check if the history object exists
+    if (window.history.scrollRestoration) {
+    window.history.scrollRestoration = 'manual';
+    }
+
+    // Optional: Also scroll to top on initial mount, just in case
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -94,4 +106,4 @@ const NavBar = () => {
   );
 }
 
-export default NavBar;
+export default NavBar
