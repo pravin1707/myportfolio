@@ -28,7 +28,6 @@ section {
     @apply scroll-smooth;
   }
   body {
-    /* All necessary base styles for the page */
     @apply bg-black/[0.96] antialiased overflow-x-hidden text-neutral-200;
   }
 }
