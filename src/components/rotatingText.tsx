@@ -13,7 +13,7 @@ import {
   type VariantLabels,
   type Target,
   type TargetAndTransition,
-} from "motion/react";
+} from "framer-motion";
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(" ");
@@ -45,7 +45,7 @@ export interface RotatingTextProps
   auto?: boolean;
   splitBy?: string;
   onNext?: (index: number) => void;
-  mainClassName?: string;
+  // mainClassName?: string;
   splitLevelClassName?: string;
   elementLevelClassName?: string;
 }
@@ -67,7 +67,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       auto = true,
       splitBy = "characters",
       onNext,
-      mainClassName,
+      // mainClassName,
       splitLevelClassName,
       elementLevelClassName,
       ...rest
@@ -203,7 +203,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
       <motion.span
         className={cn(
           "flex flex-wrap whitespace-pre-wrap relative",
-          mainClassName
+          // mainClassName
         )}
         {...rest}
         layout

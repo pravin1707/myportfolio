@@ -75,25 +75,23 @@ section {
   }
 
   .hero-layout {
-    @apply relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
+    @apply h-[37rem] w-full flex items-center relative;
   }
 
-  .hero-text {
-    @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
-    img {
-      @apply size-8 md:size-10 object-contain;
-    }
-    .slide {
-      @apply absolute pt-0 px-2 md:px-5 py-[30px] h-[48px] md:h-[78px] md:translate-y-1 translate-y-0 overflow-hidden;
-    }
+  .hero-content {
+    @apply px-7 py-4 md:px-20 max-w-7xl relative z-10 w-full text-left flex flex-col;
   }
 
-  .hero-badge {
-    @apply bg-black-200 py-2 px-4 rounded-full w-fit text-sm md:text-base text-nowrap;
+  .hero-headline {
+    @apply py-3 text-4xl md:text-7xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 leading-none;
   }
 
-  .hero-3d-layout {
-    @apply xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-20 top-24 xl:-right-20 right-0;
+  .hero-caption {
+    @apply font-semibold text-base text-neutral-300 max-w-2xl;
+  }
+
+  .rotatingtext {
+    @apply text-4xl md:text-6xl font-semibold bg-clip-text bg-transparent;
   }
 
   .navbar {

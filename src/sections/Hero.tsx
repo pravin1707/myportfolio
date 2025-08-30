@@ -2,28 +2,31 @@
 import { Spotlight } from "../components/spotlight";
 import RotatingText from "../components/rotatingText";
 
+import { rotatingTexts } from "../constants";
+
 const Hero = () => {
   return (
-    <div className="h-[37rem] w-full flex items-center relative">
+    <div className="hero-layout">
+      <Spotlight />
       <Spotlight />
       
       {/* This is the main content container. It correctly handles the overall padding and alignment. */}
-      <div className="px-7 py-4 md:px-18 max-w-7xl relative z-10 w-full text-left flex flex-col">
+      <div className="hero-content">
         
         {/* Main Headline */}
-        <h1 className="py-3 text-4xl md:text-7xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 leading-none">
+        <h1 className="hero-headline bg-opacity-50">
           Hi, I'm Pravin &<br />This is my Portfolio.
         </h1>
 
         {/* Caption */}
-        <p className="font-semibold text-base text-neutral-300 max-w-2xl">
+        <p className="hero-caption">
           I tell computers what to do, and they listen most of the time!
         </p>
 
         {/* Rotating Text */}
-        <RotatingText className="text-4xl md:text-6xl font-semibold bg-clip-text"
-          texts={['Code.', 'Create.', 'Caffeinate.']}
-          mainClassName="text-4xl md:text-6xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
+        <RotatingText className="rotatingtext"
+          texts= {rotatingTexts}
+          // mainClassName="text-4xl md:text-6xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50"
           staggerFrom={"last"}
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
@@ -31,7 +34,7 @@ const Hero = () => {
           staggerDuration={0.025}
           splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-0.5"
           transition={{ type: "spring", damping: 40, stiffness: 400 }}
-          rotationInterval={2500} 
+          rotationInterval={2000} 
         />
       </div>
     </div>
