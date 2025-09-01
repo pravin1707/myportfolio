@@ -33,78 +33,34 @@ section {
 }
 
 @layer components {
-  .padding-x {
-    @apply px-5 md:px-10;
-  }
-
-  .padding-x-lg {
-    @apply px-5 md:px-20;
-  }
-
-  .section-padding {
-    @apply px-5 md:px-10 md:mt-40 mt-20;
-  }
-
-  .mt-responsive {
-    @apply xl:mt-20 md:mt-0 mt-40;
-  }
-
-  /* General Grids */
-  .grid-base {
-    @apply grid grid-cols-1;
-  }
-
-  .grid-2-cols {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
-  }
-
-  .grid-3-cols {
-    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6;
-  }
-
-  .grid-3-cols-md-tight {
-    @apply grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-0;
-  }
-
-  .grid-4-cols {
-    @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7;
-  }
-
-  .grid-12-cols {
-    @apply grid grid-cols-1 xl:grid-cols-12 gap-10;
-  }
-
   .hero-layout {
-    @apply h-[37rem] w-full flex items-center relative;
+    @apply min-h-screen w-full flex items-center relative;
   }
 
   .hero-content {
-    @apply px-7 py-4 md:px-20 max-w-7xl relative z-10 w-full text-left flex flex-col;
+    @apply w-full max-w-7xl text-left flex flex-col relative z-10;
+    @apply py-4 px-5 sm:px-10 md:px-12 lg:px-20; /* More granular padding */
+    @apply gap-y-4 md:gap-y-3; /* Consistent vertical spacing */
   }
 
   .hero-headline {
-    @apply py-3 text-4xl md:text-7xl font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 leading-none;
+    @apply font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400;
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl; /* Smoother font scaling */
+    @apply leading-tight pb-0.5; /* IMPORTANT: Prevents text clipping */
   }
 
   .hero-caption {
-    @apply font-semibold text-base text-neutral-300 max-w-2xl;
+    @apply font-normal text-base md:text-lg text-neutral-300 max-w-3xl;
   }
 
   .rotatingtext {
-    @apply text-4xl md:text-6xl font-semibold bg-clip-text bg-transparent;
+    @apply font-semibold bg-clip-text bg-gradient-to-b from-neutral-50 to-neutral-400;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-6xl;
   }
 
   .navbar {
-    @apply fixed top-10 w-11/12 left-1/2 py-4 px-5 md:px-10 -translate-x-1/2 z-[100];
-    @apply border-2 border-transparent rounded-3xl bg-black/20 backdrop-blur-sm;
-
-    &.scrolled {
-      @apply top-0 bg-black;
-    }
-
-    &.not-scrolled {
-      @apply md:top-10 top-0 bg-transparent;
-    }
+    @apply fixed top-8 w-11/12 left-1/2 py-4 px-5 md:px-10 -translate-x-1/2 z-[100];
+    @apply border-2 border-transparent rounded-3xl bg-black/20 backdrop-blur-none;
 
     .inner {
       @apply mx-auto flex items-center justify-between;
@@ -171,11 +127,35 @@ section {
       .inner {
         @apply px-4 py-2 rounded-lg bg-white text-black group-hover:bg-black-50 transition-colors duration-300;
         span {
-          @apply group-hover:text-white transition-colors duration-300;
+          @apply group-hover:text-white transition-colors duration-200;
         }
       }
     }
   }
+
+  /* NEW: Styles for the Tech Stack section */
+  .tech-category-title {
+    /* Style for titles like "Frontend", "Backend", etc. */
+    @apply mt-12 mb-6 text-2xl md:text-3xl font-semibold text-white-50;
+  }
+
+  .tech-grid {
+    /* A responsive grid for the technology cards */
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6;
+  }
+
+  .tech-card {
+    /* The style for each individual technology card */
+    @apply flex flex-col items-center justify-center gap-4 p-4 rounded-xl;
+    @apply border border-transparent transition-all duration-300;
+    @apply bg-black-100 hover:border-blue-50/50 hover:bg-black-50;
+  }
+
+  .tech-card-icon {
+    /* Ensures icons are a consistent size */
+    @apply w-12 h-12 md:w-16 md:h-16 object-contain;
+  }
+}
 
   .app-showcase {
     @apply w-full mt-20 px-5 md:px-20 py-10 md:py-20 flex items-center justify-center;

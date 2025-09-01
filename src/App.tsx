@@ -2,8 +2,11 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Preloader } from "./components/preLoader";
+
 import NavBar from "./components/navBar";
 import Hero from "./sections/Hero";
+import Timeline from "./sections/Timeline";
+import TechStack from "./sections/Techstack";
 
 function App() {
   const [isPreloaderDone, setIsPreloaderDone] = useState(false);
@@ -24,9 +27,12 @@ function App() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
+
             {/* Add other pages here below */}
             <NavBar />
             <Hero />
+            <Timeline />
+            <TechStack />
           </motion.div>
         )}
       </AnimatePresence>

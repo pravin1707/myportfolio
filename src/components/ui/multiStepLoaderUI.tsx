@@ -61,15 +61,13 @@ const LoaderCore = ({
             transition={{ duration: 0.5 }}
           >
             <div>
-              {index > value && (
-                <CheckIcon className="text-shadow-white-50" />
-              )}
+              {index > value && <CheckIcon className="text-shadow-white-50" />}
               {index <= value && (
                 <CheckFilled
                   className={cn(
                     "text-shadow-white-50",
                     value === index &&
-                      "text-shadow-white-50 dark:text-lime-500 opacity-100"
+                      "text-shadow-white-50 dark:text-lime-500 opacity-100",
                   )}
                 />
               )}
@@ -77,7 +75,8 @@ const LoaderCore = ({
             <span
               className={cn(
                 "text-shadow-white-50",
-                value === index && "text-shadow-white-50 dark:text-lime-500 opacity-100"
+                value === index &&
+                  "text-shadow-white-50 dark:text-lime-500 opacity-100",
               )}
             >
               {loadingState.text}
@@ -123,7 +122,7 @@ export const MultiStepLoader = ({
     return () => clearTimeout(timeout);
   }, [currentState, loading, loop, loadingStates.length, duration]);
 
-    // useEffect to monitor when the animation is finished
+  // useEffect to monitor when the animation is finished
   useEffect(() => {
     // If we're at the last state, not looping, and haven't already marked as finished
     if (currentState === loadingStates.length - 1 && !loop && !isFinished) {
@@ -147,7 +146,7 @@ export const MultiStepLoader = ({
           exit={{
             opacity: 0,
           }}
-          className= "w-full h-full fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-2xl bg-transparent"
+          className="w-full h-full fixed inset-0 z-[100] flex items-center justify-center backdrop-blur-2xl bg-transparent"
         >
           <div className="h-96  relative">
             <LoaderCore value={currentState} loadingStates={loadingStates} />

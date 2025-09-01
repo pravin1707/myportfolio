@@ -1,11 +1,6 @@
 "use client";
 import { cn } from "../../lib/utils";
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 interface StarProps {
   x: number;
@@ -60,12 +55,12 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
       twinkleProbability,
       minTwinkleSpeed,
       maxTwinkleSpeed,
-    ]
+    ],
   );
 
   useEffect(() => {
     const updateStars = () => {
-      const canvasElement = canvasRef.current; 
+      const canvasElement = canvasRef.current;
       if (canvasElement) {
         const ctx = canvasElement.getContext("2d");
         if (!ctx) return;
