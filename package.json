@@ -3,16 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://pravin1707.github.io/myportfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@gsap/react": "^2.1.2",
     "@radix-ui/react-hover-card": "^1.1.15",
     "@tabler/icons-react": "^3.34.1",
@@ -20,7 +18,6 @@
     "clsx": "^2.1.1",
     "gsap": "^3.13.0",
     "motion": "^12.23.12",
-    "next": "^15.5.1",
     "qss": "^3.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",

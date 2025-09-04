@@ -1,0 +1,44 @@
+# Name of your workflow
+name: Build and Deploy to GitHub Pages
+
+# Run this workflow every time you push to the 'main' branch
+on:
+  push:
+    branches: ["experiment"]
+
+# Allow the workflow to have write permissions to deploy to gh-pages
+permissions:
+  contents: write
+
+# Define the job that will be run
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # Use the latest version of Ubuntu as the runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22' # Use a recent LTS version of Node.js
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci # 'ci' is a cleaner, faster install for automated environments
+
+      - name: Create .env file
+        run: |
+          echo "VITE_APP_EMAILJS_SERVICE_ID=${{ secrets.VITE_APP_EMAILJS_SERVICE_ID }}" >> .env
+          echo "VITE_APP_EMAILJS_TEMPLATE_ID=${{ secrets.VITE_APP_EMAILJS_TEMPLATE_ID }}" >> .env
+          echo "VITE_APP_EMAILJS_PUBLIC_KEY=${{ secrets.VITE_APP_EMAILJS_PUBLIC_KEY }}" >> .env
+          
+      - name: Build the project
+        run: npm run build # Vite will read the .env file created in the step above
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # The directory that contains your built files
