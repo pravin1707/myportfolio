@@ -4,15 +4,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Preloader } from "./components/preLoader";
 
 import NavBar from "./components/navBar";
-import Hero from "./sections/Hero";
+import { Hero } from "./sections/Hero";
 import Timeline from "./sections/Timeline";
-import TechStack from "./sections/Techstack";
+import Skillstack from "./sections/Skillstack";
+import Projects  from "./sections/Projects";
 
 function App() {
   const [isPreloaderDone, setIsPreloaderDone] = useState(false);
 
   return (
-    <>
+    <main className="relative overflow-x-hidden">
       <AnimatePresence mode="wait">
         {!isPreloaderDone ? (
           // If the preloader is NOT done, show the Preloader component
@@ -32,11 +33,12 @@ function App() {
             <NavBar />
             <Hero />
             <Timeline />
-            <TechStack />
+            <Projects />
+            <Skillstack />
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </main>
   );
 }
 

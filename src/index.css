@@ -12,6 +12,17 @@ section {
   --color-black-200: #282732;
   --color-blue-50: #839cb5;
   --color-blue-100: #2d2d38;
+
+  /* --color-night: #0b090aff;
+  --color-eerie-black: #161a1dff;
+  --color-blood-red: #660708ff;
+  --color-cornell-red: #a4161aff;
+  --color-cornell-red-2: #ba181bff;
+  --color-imperial-red: #e5383bff;
+  --color-silver: #b1a7a6ff;
+  --color-timberwolf: #d3d3d3ff;
+  --color-white-smoke: #f5f3f4ff;
+  --color-white: #ffffffff; */
 }
 
 @layer utilities {
@@ -33,6 +44,12 @@ section {
 }
 
 @layer components {
+
+  .section-padding {
+    @apply px-3 md:px-6 mt-8 md:mt-16;
+  }
+
+  /* Hero Section styling */
   .hero-layout {
     @apply min-h-screen w-full flex items-center relative;
   }
@@ -58,6 +75,7 @@ section {
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-6xl;
   }
 
+  /* NavBar Section Styling */
   .navbar {
     @apply fixed top-8 w-11/12 left-1/2 py-4 px-5 md:px-10 -translate-x-1/2 z-[100];
     @apply border-2 border-transparent rounded-3xl bg-black/20 backdrop-blur-none;
@@ -77,7 +95,6 @@ section {
         @apply flex space-x-7;
 
         li {
-          /* The new styles now live inside the li, where they belong */
           .nav-link-draw {
             @apply relative inline-block text-white-50 px-3 py-1.5 transition-colors duration-100 hover:text-white;
 
@@ -133,173 +150,95 @@ section {
     }
   }
 
-  /* NEW: Styles for the Tech Stack section */
-  .tech-category-title {
-    /* Style for titles like "Frontend", "Backend", etc. */
-    @apply mt-12 mb-6 text-2xl md:text-3xl font-semibold text-white-50;
+  /* Techstack section styling */
+  .tech-row {
+    @apply px-5 md:px-10 flex items-center w-full h-22 md:h-26;
+    @apply border-black-50 cursor-pointer overflow-hidden;
+    @apply transition-colors duration-300;
+  }
+  .tech-title {
+    @apply text-4xl sm:text-5xl md:text-6xl font-semibold text-white-50 whitespace-nowrap;
+    @apply pr-5;
+  }
+  .tech-marquee-container {
+    @apply h-full flex items-center overflow-hidden;
+    @apply [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)];
+  }
+  .tech-marquee-inner {
+    @apply flex items-center h-full;
+  }
+  .tech-icon {
+    @apply w-auto h-12 md:h-16 object-contain mx-8;
+  }
+  .tech-text-badge {
+    @apply flex items-center h-12 md:h-16 px-6 mx-8;
+    @apply bg-black-200 rounded-lg text-white-50 font-semibold whitespace-nowrap;
+    @apply border-2 border-black-50;
   }
 
-  .tech-grid {
-    /* A responsive grid for the technology cards */
-    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6;
+  /* --- Expandable Cards Section styling --- */
+  /* --- Before Expansion --- */
+  .projects-section-padding {
+    @apply px-5 md:px-16 mt-15 md:mt-25 pb-5 md:pb-10 bg-transparent;
+  }
+  .projects-headline {
+    @apply text-4xl md:text-6xl px-5 md:px-8 mt-20 md:mt-30 pb-0.5 mb-12;
+    @apply font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 leading-tight;
+  }
+  .project-card-list {
+    @apply px-2.5 md:px-5 w-full flex flex-col gap-2;
+  }
+  .project-card {
+    @apply p-4 flex flex-col md:flex-row justify-between items-center rounded-xl cursor-pointer;
+    @apply bg-black-100 border-2 border-transparent transition-colors duration-300;
+    @apply hover:border-blue-50/50 hover:bg-black-50;
+  }
+  .project-card-content {
+    @apply flex gap-5 flex-col md:flex-row text-center md:text-left;
+  }
+  .project-card-image {
+    @apply h-24 w-24 md:h-20 md:w-20 rounded-lg object-cover object-top flex-shrink-0;
+  }
+  .project-card-title {
+    @apply font-semibold text-neutral-200 text-center text-lg;
+  }
+  .project-card-description {
+    /* This is now used for the 'role' in the list view */
+    @apply text-neutral-300 text-sm;
+  }
+  .project-card-cta {
+    @apply px-4 py-2 text-sm rounded-full font-bold mt-4 md:mt-0 flex-shrink-0;
+    @apply bg-black-200 text-white-50 transition-colors duration-300 hover:bg-white-50 hover:text-black;
   }
 
-  .tech-card {
-    /* The style for each individual technology card */
-    @apply flex flex-col items-center justify-center gap-4 p-4 rounded-xl;
-    @apply border border-transparent transition-all duration-300;
-    @apply bg-black-100 hover:border-blue-50/50 hover:bg-black-50;
+  /* --- Expandable Cards Section styling --- */
+  /* --- After Expansion --- */
+  .expanded-card-wrapper {
+    @apply fixed inset-0 grid place-items-center z-40 p-30;
+  }
+  .expanded-card-image {
+    @apply w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top;
+  }
+  .expanded-card-body {
+    @apply flex flex-col p-4 overflow-y-auto;
+  }
+  .expanded-card-header {
+    @apply flex justify-between items-start p-5;
+  }
+  .expanded-card-title {
+    @apply font-bold text-xl text-neutral-200;
+  }
+  .expanded-card-description {
+    @apply text-neutral-300;
+  }
+  .expanded-card-cta {
+    @apply px-4 py-2 text-sm rounded-full font-bold bg-white-50 text-black flex-shrink-0;
+  }
+  .expanded-card-content {
+    @apply text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [scrollbar-width:thin] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch];
   }
 
-  .tech-card-icon {
-    /* Ensures icons are a consistent size */
-    @apply w-12 h-12 md:w-16 md:h-16 object-contain;
-  }
-
-  .app-showcase {
-    @apply w-full mt-20 px-5 md:px-20 py-10 md:py-20 flex items-center justify-center;
-
-    .showcaselayout {
-      @apply flex xl:flex-row flex-col gap-10 justify-between;
-    }
-
-    .first-project-wrapper {
-      @apply h-full flex flex-col justify-between xl:w-[60%];
-
-      .image-wrapper {
-        @apply xl:h-[70vh] md:h-[50vh] h-96 relative;
-
-        img {
-          @apply w-full h-full object-cover rounded-xl absolute inset-0;
-        }
-      }
-
-      .text-content {
-        @apply space-y-5 mt-5;
-
-        .badges {
-          @apply flex gap-2 mb-4;
-        }
-
-        h2 {
-          @apply text-2xl md:text-3xl lg:text-4xl font-bold;
-        }
-      }
-    }
-
-    .project-list-wrapper {
-      @apply flex md:flex-row flex-col xl:flex-col gap-10 xl:w-[40%];
-
-      .image-wrapper {
-        @apply xl:h-[37vh] md:h-52 lg:h-72 h-64 relative rounded-xl xl:px-5 2xl:px-12 py-0;
-      }
-
-      img {
-        @apply w-full h-full object-contain rounded-xl;
-      }
-
-      h2 {
-        @apply text-lg md:text-xl lg:text-2xl font-semibold mt-5;
-      }
-    }
-  }
-
-  .cta-wrapper {
-    @apply relative z-20 cursor-pointer;
-  }
-
-  .cta-button {
-    @apply px-4 py-4 rounded-lg bg-black-200 flex justify-center items-center relative cursor-pointer overflow-hidden;
-
-    .bg-circle {
-      @apply absolute -right-10 origin-center top-1/2 -translate-y-1/2 
-        w-[120%] h-[120%] group-hover:size-10 group-hover:right-10
-        rounded-full bg-white-50 transition-all duration-500;
-    }
-
-    .text {
-      @apply uppercase md:text-lg text-black transition-all duration-500
-        group-hover:text-white-50 group-hover:-translate-x-5 xl:translate-x-0 -translate-x-5;
-    }
-
-    .arrow-wrapper {
-      @apply group-hover:bg-white-50 size-10 rounded-full absolute right-10 top-1/2 
-        -translate-y-1/2 flex justify-center items-center overflow-hidden;
-
-      img {
-        @apply size-5 xl:-translate-y-32 translate-y-0 animate-bounce group-hover:translate-y-0 transition-all duration-500;
-      }
-    }
-  }
-
-  .card-border {
-    @apply border border-black-50 bg-black-100;
-  }
-
-  .marquee-item {
-    @apply md:w-40 w-32;
-  }
-
-  .timeline-wrapper {
-    @apply absolute top-0 xl:left-[35.5vw] md:left-10 left-5 h-full flex justify-center;
-  }
-
-  .timeline {
-    @apply absolute z-30 h-[110%] -top-10 w-14 md:w-28 bg-black;
-  }
-
-  .timeline-logo {
-    @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100;
-  }
-
-  .exp-card-wrapper {
-    @apply flex flex-col-reverse xl:flex-row xl:gap-20 gap-10 justify-between;
-  }
-
-  .gradient-edge {
-    @apply w-36 h-full absolute bottom-0 z-20;
-  }
-
-  .tech-card-animated-bg {
-    @apply absolute left-0 bottom-[-100%] w-full h-full bg-[#2D3240] group-hover:bottom-0 transition-all duration-700;
-  }
-
-  .tech-card-content {
-    @apply flex flex-col md:justify-center items-center xl:gap-5 xl:h-[50vh] overflow-hidden relative z-10 group-hover:cursor-grab;
-
-    & p {
-      @apply text-lg 2xl:text-2xl pb-5 xl:pb-0 font-semibold text-white-50 text-center;
-    }
-  }
-
-  .tech-grid {
-    @apply grid xl:grid-cols-5 md:grid-cols-3 grid-cols-1 xl:gap-16 md:gap-10 gap-5 mt-16;
-  }
-
-  .tech-icon-wrapper {
-    @apply flex justify-center items-center w-52 h-60 relative;
-  }
-
-  form {
-    label {
-      @apply block text-white-50 mb-2;
-    }
-
-    input,
-    textarea {
-      @apply w-full px-4 py-4 md:text-base text-sm placeholder:text-blue-50 bg-blue-100 rounded-md;
-    }
-
-    a {
-      @apply w-full py-4 bg-white text-black font-semibold rounded-md flex justify-center items-center gap-2;
-
-      img {
-        @apply inline-block;
-      }
-    }
-  }
-
-  .footer {
+  /* .footer {
     @apply my-10 md:mt-20 mt-10 text-white-50 px-5 md:px-20 xl:px-20 flex items-center justify-center;
 
     .footer-container {
@@ -321,5 +260,5 @@ section {
         @apply inline-block;
       }
     }
-  }
+  } */
 }

@@ -5,7 +5,7 @@ import { Spotlight } from "../components/spotlight";
 
 import { rotatingTexts } from "../constants";
 
-const Hero = () => {
+export const Hero = () => {
   return (
     <div className="hero-layout">
       <Spotlight />
@@ -43,5 +43,3 @@ const Hero = () => {
     </div>
   );
 };
-
-export default Hero;

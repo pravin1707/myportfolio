@@ -1,6 +1,5 @@
 "use client";
 import {
-  // useMotionValueEvent,
   useScroll,
   useTransform,
   motion,
@@ -33,13 +32,11 @@ export const TimelineUI = ({ data }: { data: TimelineEntry[] }) => {
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <section ref={containerRef} className="px-5 md:px-20 mt-20 md:mt-30">
-      <div className="max-w-3xl mb-8">
-        {/* UPDATED: Applied the same gradient text style as your Hero section */}
+    <section ref={containerRef} className="px-5 md:px-20 mt-15 md:mt-25">
+      <div className="max-w-3xl mb-4">
         <h2 className="pb-2.5 text-4xl md:text-6xl mb-4 bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 font-semibold">
           My Professional Journey
         </h2>
-        {/* UPDATED: Text color now matches the rest of the site's body text */}
         <p className="text-neutral-200 text-base md:text-lg leading-tight">
           A timeline of my key experiences and accomplishments in the world of software development.
         </p>
