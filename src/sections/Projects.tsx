@@ -3,8 +3,8 @@ import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "../hooks/useOutsideClick";
 
-export default function Projects() {
-  const [active, setActive] = useState<(typeof cards)[number] | null>(null);
+export const Projects = () => {
+  const [active, setActive] = useState<(typeof projects)[number] | null>(null);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
 
@@ -23,7 +23,7 @@ export default function Projects() {
   useOutsideClick(ref, () => setActive(null));
 
   return (
-    <section className="projects-section-padding" id="projects">
+    <section className="projects-section-padding scroll-mt-nav" id="projects">
       <h2 className="projects-headline">My Projects</h2>
       <AnimatePresence>
         {active && typeof active === "object" && (
@@ -40,7 +40,7 @@ export default function Projects() {
         {active && typeof active === "object" ? (
           <div className="expanded-card-wrapper">
             <motion.button
-              key={`button-${active.title}-${id}`}
+              key={`button-${active.projtitle}-${id}`}
               layout
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -50,17 +50,17 @@ export default function Projects() {
               <CloseIcon />
             </motion.button>
             <motion.div
-              layoutId={`card-${active.title}-${id}`}
+              layoutId={`card-${active.projtitle}-${id}`}
               ref={ref}
               className="w-full max-w-[600px]  h-full md:h-fit md:max-h-[80%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden">
               
               {/* img if needed for display, currently disabled */}
-              {/* <motion.div layoutId={`image-${active.title}-${id}`}>
+              {/* <motion.div layoutId={`image-${active.projtitle}-${id}`}>
                 <img
                   width={200}
                   height={200}
                   src={active.src}
-                  alt={active.title}
+                  alt={active.projtitle}
                   className="expanded-card-image"/>
               </motion.div> */}
 
@@ -68,24 +68,25 @@ export default function Projects() {
                 <div className="expanded-card-header">
                   <div className="">
                     <motion.h3
-                      layoutId={`title-${active.title}-${id}`}
-                      className="expanded-card-title">
-                      {active.title}
+                      layoutId={`projtitle-${active.projtitle}-${id}`}
+                      className="expanded-card-projtitle">
+                      {active.projtitle}
                     </motion.h3>
                     <motion.p
-                      layoutId={`description-${active.description}-${id}`}
-                      className="expanded-card-description">
-                      {active.description}
+                      layoutId={`role-${active.role}-${id}`}
+                      className="expanded-card-role">
+                      {active.role}
                     </motion.p>
                   </div>
 
-                  <motion.a
-                    layoutId={`button-${active.title}-${id}`}
+                  {/* Button to add a link to github: disabled for now */}
+                  {/* <motion.a
+                    layoutId={`button-${active.projtitle}-${id}`}
                     href={active.ctaLink}
                     target="_blank"
                     className="expanded-card-cta">
                     {active.ctaText}
-                  </motion.a>
+                  </motion.a> */}
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -104,45 +105,51 @@ export default function Projects() {
           </div>
         ) : null}
       </AnimatePresence>
-      {/* Definitions: Unexpanded cards */}
-      <ul className="project-card-list">
-        {cards.map((card) => (
+      {/* Definitions: Unexpanded project */}
+      <motion.ul className="project-card-list">
+        {projects.map((card) => (
           <motion.div
-            layoutId={`card-${card.title}-${id}`}
-            key={`card-${card.title}-${id}`}
+            layoutId={`card-${card.projtitle}-${id}`}
+            key={`card-${card.projtitle}-${id}`}
             onClick={() => setActive(card)}
             className="project-card">
-            
-            <div className="project-card-content">
-              <motion.div layoutId={`image-${card.title}-${id}`}>
+            <motion.div className="project-card-content">
+              {/* img if needed for display, currently disabled */}
+              {/* <motion.div layoutId={`image-${card.projtitle}-${id}`}>
                 <img
                   src={card.src}
-                  alt={card.title}
+                  alt={card.projtitle}
                   className="project-card-image"/>
-              </motion.div>
-              <div className="">
+              </motion.div> */}
+              <motion.div className="">
                 <motion.h3
-                  layoutId={`title-${card.title}-${id}`}
+                  layoutId={`projtitle-${card.projtitle}-${id}`}
                   className="project-card-title">
-                  {card.title}
+                  {card.projtitle}
                 </motion.h3>
-                <motion.p
-                  layoutId={`description-${card.description}-${id}`}
-                  className="text-neutral-400 text-center md:text-left">
-                  {card.description}
-                </motion.p>
-              </div>
-            </div>
+                {card.role && (
+                  <motion.p
+                    // THE MAIN FIX: The layoutId is now based on the UNIQUE card.projtitle
+                    layoutId={`role-${card.projtitle}-${id}`}
+                    
+                    // CORRECTED: Using your .project-card-role class
+                    className="project-card-role"
+                  >
+                    {card.role}
+                  </motion.p>
+                )}
+              </motion.div>
+            </motion.div>
             {/* <motion.button
-              layoutId={`button-${card.title}-${id}`}
+              layoutId={`button-${card.projtitle}-${id}`}
               className="project-card-cta">
               {card.ctaText}
             </motion.button> */}
           </motion.div>
         ))}
-      </ul>
+      </motion.ul>
       </section>
-  );
+    );
 }
 
 export const CloseIcon = () => {
@@ -178,69 +185,80 @@ export const CloseIcon = () => {
   );
 };
 
-const cards = [
+const projects = [
   {
-    title: "Summertime Sadness",
-    description: "Lana Del Rey",
-    src: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
+    projtitle: "Designing an Efficient University Course Management System Using Design Patterns",
+    role: "Design & Development",
+    // src: "https://assets.aceternity.com/demos/lana-del-rey.jpeg",
     ctaText: "GitHub",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
       return (
         <p>
-          Lana Del Rey is a Grammy Award-winning singer-songwriter from San
-          Francisco, California. Her music is known for its lyrical and emotional
-          content, often centered around themes of love, loss, and personal
-          struggle. <br /> <br /> Lana Del Rey's music has been acclaimed for its
-          deep emotional depth and powerful lyrics, capturing the essence of
-          modern pop music. With a career spanning over two decades, Lana Del Rey
-          has released numerous hit albums and singles that have garnered her a
-          massive fan following both in the United States and abroad.
+          <ul>
+            <li>
+              ● Developed a course management system using Java, VS Code, and Design Patterns concepts to manage class attributes such as available seats, professors, and a priority-based student enrollment system across departments.
+            </li>
+            <li>
+              ● Implemented tracking of core and elective courses essential for degree completion to ensure academic progress.
+            </li>
+            <li>
+              ● Applied various design patterns to enhance system efficiency and maintainability.
+            </li>
+          </ul>
         </p>
       );
     },
   },
   {
-    title: "For Whom The Bell Tolls",
-    description: "Metallica",
-    src: "https://assets.aceternity.com/demos/metallica.jpeg",
+    projtitle: "Development of Intelligent Pacman Agents Using Search Algorithms and Reinforcement Learning",
+    role: "Design & Development",
+    // src: "https://assets.aceternity.com/demos/metallica.jpeg",
     ctaText: "GitHub",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
       return (
         <p>
-          Metallica, an iconic American heavy metal band, is renowned for their
-          powerful sound and intense performances that resonate deeply with
-          their audience. Formed in Los Angeles, California, they have become a
-          cultural icon in the heavy metal music industry. <br /> <br /> Their
-          songs often reflect themes of aggression, social issues, and personal
-          struggles, capturing the essence of the heavy metal genre. With a
-          career spanning over four decades, Metallica has released numerous hit
-          albums and singles that have garnered them a massive fan following
-          both in the United States and abroad.
+          <ul>
+            <li>
+              ● Developed a Pacman agent with VS Code and Python using search algorithms like minimax and expectimax for efficient maze navigation and ghost interaction.
+            </li>
+            <li>
+              ● Implemented value iteration and Q-learning, testing the agent on Gridworld, Crawler, and Pacman to refine decision-making.
+            </li>
+            <li>
+              ● Optimized agent behavior through rigorous testing and fine-tuning of learning models.
+            </li>
+          </ul>
         </p>
       );
     },
   },
   {
-    title: "Stairway To Heaven",
-    description: "Led Zeppelin",
-    src: "https://assets.aceternity.com/demos/led-zeppelin.jpeg",
+    projtitle: "Comparative Analysis of COVID-19 Detection in X-Rays Using CNN Algorithms",
+    role: "Design & Development",
+    // src: "https://assets.aceternity.com/demos/led-zeppelin.jpeg",
     ctaText: "GitHub",
     ctaLink: "https://ui.aceternity.com/templates",
     content: () => {
       return (
         <p>
-          Led Zeppelin, a legendary British rock band, is renowned for their
-          innovative sound and profound impact on the music industry. Formed in
-          London in 1968, they have become a cultural icon in the rock music
-          world. <br /> <br /> Their songs often reflect a blend of blues, hard
-          rock, and folk music, capturing the essence of the 1970s rock era.
-          With a career spanning over a decade, Led Zeppelin has released
-          numerous hit albums and singles that have garnered them a massive fan
-          following both in the United Kingdom and abroad.
+          <ul>
+            <li>
+              ● Developed a deep neural network model for COVID-19 detection from chest X-ray images utilizing Google Colab, Python, Numpy, Keras, Seaborn, and Matplotlib.
+            </li>
+            <li>
+              ● Implemented and compared Inception-v3, VGG-19, and Xception Convolutional Neural Network (CNN) algorithms, incorporating techniques like image resizing, normalization, RMSprop optimizer, batch normalization, and label smoothing regularization.
+            </li>
+            <li>
+              ● Achieved approximately 99% accuracy across all three models in predicting COVID-19 from chest X-rays, with ROC values of 1 and F1-scores of 0.99, demonstrating robust and balanced classification performance.
+            </li>
+            <li>
+              ● Created a high-accuracy Model designed to assist radiologists in the diagnosis and detection of suspected COVID-19 patients, potentially aiding in faster diagnosis and patient management, especially in situations with limited resources.
+            </li>
+          </ul>
         </p>
       );
     },
   },
-];
+]; // setup repo, and get the link working

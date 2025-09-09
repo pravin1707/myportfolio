@@ -30,13 +30,21 @@ const getRandomStartPoint = () => {
 
   switch (side) {
     case 0:
-      return { x: offset, y: 0, angle: 45 };
+      return { x: offset, y: 0, angle: Math.random() * 60 + 60 }; // Angle towards bottom
     case 1:
-      return { x: window.innerWidth, y: offset, angle: 135 };
+      return { x: window.innerWidth, y: Math.random() * window.innerHeight, angle: Math.random() * 60 + 150 }; // Angle towards left
     case 2:
-      return { x: offset, y: window.innerHeight, angle: 225 };
+      return { x: offset, y: window.innerHeight, angle: Math.random() * 60 + 240 }; // Angle towards top
     case 3:
-      return { x: 0, y: offset, angle: 315 };
+      return { x: 0, y: Math.random() * window.innerHeight, angle: Math.random() * 60 + 330 }; // Angle towards right
+    case 4:
+      return { x: 0, y: 0, angle: Math.random() * 45 + 25 }; // Angle towards bottom-right
+    case 5:
+      return { x: window.innerWidth, y: 0, angle: Math.random() * 45 + 115 }; // Angle towards bottom-left
+    case 6:
+      return { x: window.innerWidth, y: window.innerHeight, angle: Math.random() * 45 + 205 }; // Angle towards top-left
+    case 7:
+      return { x: 0, y: window.innerHeight, angle: Math.random() * 45 + 295 }; // Angle towards top-right
     default:
       return { x: 0, y: 0, angle: 45 };
   }

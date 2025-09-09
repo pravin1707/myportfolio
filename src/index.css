@@ -44,86 +44,69 @@ section {
 }
 
 @layer components {
-
   .section-padding {
     @apply px-3 md:px-6 mt-8 md:mt-16;
   }
 
-  /* Hero Section styling */
+  .scroll-mt-nav {
+    @apply scroll-mt-50;
+  }
+
+  /* Hero Section */
   .hero-layout {
     @apply min-h-screen w-full flex items-center relative;
   }
-
   .hero-content {
     @apply w-full max-w-7xl text-left flex flex-col relative z-10;
     @apply py-4 px-5 sm:px-10 md:px-12 lg:px-20; /* More granular padding */
     @apply gap-y-4 md:gap-y-3; /* Consistent vertical spacing */
   }
-
   .hero-headline {
     @apply font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400;
     @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl; /* Smoother font scaling */
     @apply leading-tight pb-0.5; /* IMPORTANT: Prevents text clipping */
   }
-
   .hero-caption {
     @apply font-normal text-base md:text-lg text-neutral-300 max-w-3xl;
   }
-
   .rotatingtext {
     @apply font-semibold bg-clip-text bg-gradient-to-b from-neutral-50 to-neutral-400;
     @apply text-2xl sm:text-3xl md:text-4xl lg:text-6xl;
   }
 
-  /* NavBar Section Styling */
+  /* NavBar Section */
   .navbar {
     @apply fixed top-8 w-11/12 left-1/2 py-4 px-5 md:px-10 -translate-x-1/2 z-[100];
     @apply border-2 border-transparent rounded-3xl bg-black/20 backdrop-blur-none;
-
     .inner {
       @apply mx-auto flex items-center justify-between;
     }
-
     .logo {
       @apply text-white-50 text-xl md:text-2xl font-semibold;
     }
-
     nav.desktop {
       @apply flex items-center;
-
       ul {
         @apply flex space-x-7;
-
         li {
           .nav-link-draw {
             @apply relative inline-block text-white-50 px-3 py-1.5 transition-colors duration-100 hover:text-white;
-
-            /* General styles for all four border spans */
             span {
-              @apply absolute bg-white transition-all ease-in-out;
+              @apply absolute bg-white transition-all ease-in-out; /* General styles for all four border spans */
             }
-
-            /* 1. The Bottom Border */
             .border-bottom {
-              @apply bottom-0 left-0 h-[2px] w-0 duration-200;
+              @apply bottom-0 left-0 h-[2px] w-0 duration-200; /* 1. The Bottom Border */
             }
-
-            /* 2. The Right Border */
             .border-right {
-              @apply bottom-0 right-0 w-[2px] h-0 duration-200 delay-200;
+              @apply bottom-0 right-0 w-[2px] h-0 duration-200 delay-200; /* 2. The Right Border */
             }
-
-            /* 3. The Top Border */
             .border-top {
-              @apply top-0 right-0 h-[2px] w-0 duration-200 delay-[400ms];
+              @apply top-0 right-0 h-[2px] w-0 duration-200 delay-[400ms]; /* 3. The Top Border */
             }
-
-            /* 4. The Left Border */
             .border-left {
-              @apply top-0 left-0 w-[2px] h-0 duration-200 delay-[600ms];
+              @apply top-0 left-0 w-[2px] h-0 duration-200 delay-[600ms]; /* 4. The Left Border */
             }
           }
-
           /* Triggering the Animation on Hover */
           .nav-link-draw:hover {
             .border-bottom,
@@ -138,7 +121,6 @@ section {
         }
       }
     }
-
     .contact-btn {
       @apply flex;
       .inner {
@@ -150,7 +132,68 @@ section {
     }
   }
 
-  /* Techstack section styling */
+  /* --- Expandable Cards Section --- */
+  /* --- Before Expansion --- */
+  .projects-section-padding {
+    @apply px-5 md:px-16 mt-15 md:mt-25 pb-5 md:pb-10 bg-transparent;
+  }
+  .projects-headline {
+    @apply text-4xl md:text-6xl px-3 md:px-5 mt-20 md:mt-30 pb-0.5 mb-12;
+    @apply font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 leading-tight;
+  }
+  .project-card-list {
+    @apply px-2.5 md:px-6 w-full flex flex-col gap-2;
+  }
+  .project-card {
+    @apply p-6 flex flex-col md:flex-row justify-between items-center rounded-xl cursor-pointer;
+    @apply bg-black-100 border-2 border-transparent transition-colors duration-300;
+    @apply hover:border-blue-50/50 hover:bg-black-50;
+  }
+  .project-card-content {
+    @apply flex gap-5 flex-col md:flex-row text-center md:text-left;
+  }
+  .project-card-image {
+    @apply h-24 w-24 md:h-20 md:w-20 rounded-lg object-cover object-top flex-shrink-0;
+  }
+  .project-card-title {
+    @apply font-semibold text-neutral-200 text-center text-lg;
+  }
+  .project-card-role {
+    @apply text-neutral-300 text-sm;
+  }
+  .project-card-cta {
+    @apply px-4 py-2 text-sm rounded-full font-bold mt-4 md:mt-0 flex-shrink-0;
+    @apply bg-black-200 text-white-50 transition-colors duration-300 hover:bg-white-50 hover:text-black;
+  }
+
+  /* --- Expandable Cards Section --- */
+  /* --- After Expansion --- */
+  .expanded-card-wrapper {
+    @apply fixed inset-0 grid place-items-center z-40 p-30;
+  }
+  .expanded-card-image {
+    @apply w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top;
+  }
+  .expanded-card-body {
+    @apply flex flex-col p-4 overflow-y-auto;
+  }
+  .expanded-card-header {
+    @apply flex justify-between items-start p-5;
+  }
+  .expanded-card-projtitle {
+    @apply font-bold text-xl text-neutral-200;
+  }
+  .expanded-card-role {
+    @apply text-neutral-300;
+  }
+  .expanded-card-cta {
+    @apply px-4 py-2 text-sm rounded-full font-bold bg-white-50 text-black flex-shrink-0;
+  }
+  .expanded-card-content {
+    @apply text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [scrollbar-width:thin] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch];
+  }
+
+  /* Techstack section */
   .tech-row {
     @apply px-5 md:px-10 flex items-center w-full h-22 md:h-26;
     @apply border-black-50 cursor-pointer overflow-hidden;
@@ -176,89 +219,98 @@ section {
     @apply border-2 border-black-50;
   }
 
-  /* --- Expandable Cards Section styling --- */
-  /* --- Before Expansion --- */
-  .projects-section-padding {
-    @apply px-5 md:px-16 mt-15 md:mt-25 pb-5 md:pb-10 bg-transparent;
+  /* Contact section */
+  .card-border {
+    @apply border border-black-50/20 bg-black-100/50 backdrop-blur-md;
   }
-  .projects-headline {
-    @apply text-4xl md:text-6xl px-5 md:px-8 mt-20 md:mt-30 pb-0.5 mb-12;
-    @apply font-semibold bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 leading-tight;
-  }
-  .project-card-list {
-    @apply px-2.5 md:px-5 w-full flex flex-col gap-2;
-  }
-  .project-card {
-    @apply p-4 flex flex-col md:flex-row justify-between items-center rounded-xl cursor-pointer;
-    @apply bg-black-100 border-2 border-transparent transition-colors duration-300;
-    @apply hover:border-blue-50/50 hover:bg-black-50;
-  }
-  .project-card-content {
-    @apply flex gap-5 flex-col md:flex-row text-center md:text-left;
-  }
-  .project-card-image {
-    @apply h-24 w-24 md:h-20 md:w-20 rounded-lg object-cover object-top flex-shrink-0;
-  }
-  .project-card-title {
-    @apply font-semibold text-neutral-200 text-center text-lg;
-  }
-  .project-card-description {
-    /* This is now used for the 'role' in the list view */
-    @apply text-neutral-300 text-sm;
-  }
-  .project-card-cta {
-    @apply px-4 py-2 text-sm rounded-full font-bold mt-4 md:mt-0 flex-shrink-0;
-    @apply bg-black-200 text-white-50 transition-colors duration-300 hover:bg-white-50 hover:text-black;
-  }
-
-  /* --- Expandable Cards Section styling --- */
-  /* --- After Expansion --- */
-  .expanded-card-wrapper {
-    @apply fixed inset-0 grid place-items-center z-40 p-30;
-  }
-  .expanded-card-image {
-    @apply w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top;
-  }
-  .expanded-card-body {
-    @apply flex flex-col p-4 overflow-y-auto;
-  }
-  .expanded-card-header {
-    @apply flex justify-between items-start p-5;
-  }
-  .expanded-card-title {
-    @apply font-bold text-xl text-neutral-200;
-  }
-  .expanded-card-description {
-    @apply text-neutral-300;
-  }
-  .expanded-card-cta {
-    @apply px-4 py-2 text-sm rounded-full font-bold bg-white-50 text-black flex-shrink-0;
-  }
-  .expanded-card-content {
-    @apply text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [scrollbar-width:thin] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch];
-  }
-
-  /* .footer {
-    @apply my-10 md:mt-20 mt-10 text-white-50 px-5 md:px-20 xl:px-20 flex items-center justify-center;
-
-    .footer-container {
-      @apply grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-0 w-full;
+  form {
+    label {
+      /* Clean, readable labels for form fields */
+      @apply block text-white-50 mb-2 font-semibold;
     }
-
-    p {
-      @apply text-center md:text-start;
+    input,
+    textarea {
+      /* Modern, dark input fields with a focus state for good UX */
+      @apply w-full px-4 py-3 rounded-lg text-base placeholder:text-white-50/30;
+      @apply bg-blue-100/50 border border-transparent;
+      @apply transition-all duration-300;
+      @apply focus:outline-none focus:border-white-50/50 focus:bg-black-100;
     }
+  }
 
-    .socials {
-      @apply flex items-center justify-center gap-5;
+  /* --- Animated CTA Button --- */
+  .cta-button {
+    @apply px-8 py-4 rounded-lg bg-white-50 flex justify-center items-center relative cursor-pointer overflow-hidden;
+    @apply text-black font-semibold;
+  }
+  .cta-button .bg-circle {
+    @apply absolute -right-20 top-1/2 -translate-y-1/2 rounded-full;
+    @apply size-[200%] bg-black-200;
+    @apply transition-all duration-500 ease-in-out;
+    @apply group-hover:size-10 group-hover:right-5;
+  }
+  .cta-button .text {
+    @apply relative z-10 transition-colors duration-300 group-hover:text-black-50;
+  }
+  .cta-button .arrow-wrapper {
+    @apply size-10 rounded-full absolute right-5 top-1/2 -translate-y-1/2;
+    @apply overflow-hidden opacity-0 scale-50;
+    @apply transition-all duration-300 ease-in-out;
+    @apply group-hover:opacity-100 group-hover:scale-100;
 
-      .icon {
-        @apply border border-black-50 bg-black-100 flex justify-center items-center rounded-xl size-10 md:size-12 cursor-pointer transition-all duration-500 hover:bg-black-50;
-      }
-
-      img {
-        @apply inline-block;
-      }
+    img {
+      @apply size-5;
     }
+  }
+
+  /* Experience Section */
+  .experience-card {
+    @apply rounded-2xl p-4 md:p-6;
+  }
+  .company {
+    @apply text-2xl md:text-3xl font-bold text-white-50;
+  }
+  .role {
+    @apply text-base md:text-lg text-blue-50 mt-1;
+  }
+  .task {
+    @apply list-disc list-inside flex flex-col gap-2 mt-4;
+    @apply text-base text-neutral-200;
+  }
+
+  /* Footer Section */
+  .footer {
+    @apply my-10 md:mt-20 text-white-50 px-5 md:px-10;
+    @apply flex items-center justify-center;
+  }
+  .footer-container {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 w-full items-center;
+  }
+  .footer-copyright {
+    @apply text-center md:text-left;
+  }
+  .socials {
+    @apply flex items-center justify-center md:justify-end gap-4;
+    .icon {
+      @apply border border-black-50 bg-black-100 rounded-xl;
+      @apply size-8 md:size-12 cursor-pointer transition-all duration-300;
+      @apply hover:bg-black-50 hover:border-blue-50/50;
+    }
+    img {
+      @apply w-6 h-6 md:w-7 md:h-7 object-contain;
+      @apply invert brightness-100 transition-all duration-300;
+      @apply group-hover:brightness-200;
+    }
+  }
+
+  /* About me Section */
+  .about-grid {
+    @apply pb-10 md:pb-15 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-15 items-center;
+  }
+  /* .about-image-wrapper {
+    @apply w-full aspect-square max-w-md mx-auto lg:mx-0 relative;
   } */
+  .about-text-content {
+    @apply flex flex-col gap-y-6;
+  }
 }

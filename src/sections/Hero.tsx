@@ -7,7 +7,7 @@ import { rotatingTexts } from "../constants";
 
 export const Hero = () => {
   return (
-    <div className="hero-layout">
+    <div id="home" className="hero-layout scroll-mt-nav">
       <Spotlight />
       <Spotlight />
 

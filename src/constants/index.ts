@@ -1,7 +1,7 @@
 export const navLinks = [
   {
     name: "About Me",
-    link: "#aboutMe",
+    link: "#about",
   },
   {
     name: "Experience",
@@ -133,5 +133,66 @@ export const skillstackicons = [
       { name: "RDBMS" },
       { name: "SPA/SSR" },
     ],
+  },
+];
+
+export const experienceData = [
+  {
+    year: "Aug ‘21 - Aug ‘22",
+    company: "BINI",
+    role: "Junior Web Developer",
+    tasks: [
+      "Designed, developed, and optimized backend applications using C# and .NET Core MVC, improving system scalability and maintainability.",
+      "Designed, deployed, and maintained MySQL database, ensuring normalized schemas, data integrity, and efficient query performance for production use.",
+      "Developed and maintained mobile frontend features using Flutter, implementing intuitive UI components and cross-platform layouts for both Android and iOS platforms.",
+      "Integrated Flutter-based mobile frontends with backend services built in .NET Core MVC, leveraging REST APIs, Firebase, and MySQL to deliver seamless functionality across devices.",
+      "Designed responsive web pages using HTML, CSS, and JavaScript, ensuring consistent UX across screen sizes and browsers, all developed within Visual Studio.",
+      "Performed API validation using Postman and implemented CI/CD pipeline automation using Jenkins, improving build efficiency and reducing deployment time, while using Git for version control and tracking codebase changes."
+    ],
+  },
+  {
+    year: "Feb ‘21 - Jul ‘21",
+    company: "BINI",
+    role: "Junior Web Developer Intern",
+    tasks: [
+      "Assisted in developing backend applications using C# and .NET Core MVC, contributing to core logic modules for the web application.",
+      "Built and styled user-facing interfaces with HTML, CSS, and JavaScript, ensuring cross-platform compatibility and responsiveness.",
+      "Implemented SQL logic in MySQL to support efficient cross-module data operations.",
+      "Performed unit and integration testing using Postman and manual scripts to validate APIs and form data submissions.",
+      "Collaborated with the mobile app development team to prototype UI elements in Flutter, gaining experience in cross-platform design patterns."
+    ],
+  },
+  {
+    year: "Dec ’19 - Apr ‘20",
+    company: "Natems Sugar Private Limited",
+    role: "Software Engineer Intern",
+    tasks: [
+      "Designed and developed a binary classification model using Logistic Regression to evaluate employee performance, classifying individuals as high or low performers based on historical and behavioral data.",
+      "Utilized Anaconda Navigator, Jupyter Notebook, and TensorFlow to implement the machine learning pipeline, enabling efficient model development, training, and testing in a reproducible environment.",
+      "Performed comprehensive data preprocessing, including feature normalization, handling missing values, and balancing the dataset using SMOTE, an over-sampling technique to enhance model generalization.",
+      "Applied feature selection techniques such as correlation analysis with Pearson coefficients and heatmaps to identify the most influential attributes affecting employee performance.",
+      "Trained the model using a training-validation split, and evaluated its performance using multiple classification and regression metrics, including Confusion Matrix, ROC-AUC, Accuracy, MAE, MSE, and R², ensuring robustness and reliability of the predictions."
+    ],
+  },
+];
+
+export const socialImgs = [
+  {
+    name: "Github",
+    url: "https://github.com/pravin1707/",
+    imgPath: "https://images.icon-icons.com/3685/PNG/512/github_logo_icon_229278.png",
+    alt: "GitHub Logo",
+  },
+  {
+    name: "linkedin",
+    url: "https://www.linkedin.com/in/pravin-kumar-52167719a/",
+    imgPath: "https://img.icons8.com/win10/512/linkedin.png",
+    alt: "LinkedIn Logo",
+  }, 
+  {
+    name: "x",
+    url: "https://x.com/PKpravin17/",
+    imgPath: "https://static.vecteezy.com/system/resources/previews/031/737/227/non_2x/twitter-new-logo-twitter-icons-new-twitter-logo-x-2023-x-social-media-icon-free-png.png",
+    alt: "X Logo",
   },
 ];

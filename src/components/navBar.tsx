@@ -6,7 +6,7 @@ import { navLinks } from "../constants/index";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const NavBar = () => {
+export const NavBar = () => {
   // const [scrolled, setScrolled] = useState(false);    // track if the user has scrolled down the page
 
   const logoRef = useRef<HTMLAnchorElement>(null); // ref for the logo element
@@ -81,7 +81,7 @@ const NavBar = () => {
     <header className="navbar" ref={navRef}>
       <div className="inner">
         {/* Logo */}
-        <a href="#hero" className="logo" ref={logoRef}>
+        <a href="#home" className="logo" ref={logoRef}>
           PK
         </a>
 
@@ -114,5 +114,3 @@ const NavBar = () => {
     </header>
   );
 };
-
-export default NavBar;
