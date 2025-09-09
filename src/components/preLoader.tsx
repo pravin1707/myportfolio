@@ -18,7 +18,6 @@ export const Preloader = ({ onEnter }: { onEnter: () => void }) => {
     <div>
       <StarsBackground />
       <ShootingStars />
-      <ShootingStars />
       {/* The Loader (Engine) is used here */}
       <Loader
         loadingStates={loadingStates}
